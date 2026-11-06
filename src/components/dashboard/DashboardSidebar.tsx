@@ -1,94 +1,193 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
+import {
+  SquaresFour,
+  Trophy,
+  CalendarCheck,
+  Medal,
+  CreditCard,
+  FileText,
+  Envelope,
+  Bell,
+  Question,
+  User,
+  SidebarSimple,
+} from 'phosphor-react';
 
 interface DashboardSidebarProps {
   activeTab: string;
   onSelectTab: (tab: string) => void;
   userName: string;
   onLogout: () => void;
+  isCollapsed?: boolean;
+  onToggleCollapse?: () => void;
 }
 
-const NAV_ITEMS = [
-  { name: 'Overview', icon: '▦' },
-  { name: 'Events', icon: '◈' },
-  { name: 'My Events', icon: '◉' },
-  { name: 'HackMate AI', icon: '✦', isAi: true },
-  { name: 'IdeaCheck AI', icon: '✦' },
-  { name: 'Certificates', icon: '◩' },
-  { name: 'Digital Card', icon: '▤' },
-  { name: 'RuleBot AI', icon: '✦', isAi: true },
-  { name: 'Student Guide', icon: '◪' },
-  { name: 'Official Communication', icon: '✉' },
-  { name: 'Notifications', icon: '🔔' },
-  { name: 'Help & Support', icon: '?' },
-  { name: 'Profile', icon: '👤' },
+interface NavItem {
+  name: string;
+  icon: React.ComponentType<{ className?: string; size?: number | string }>;
+}
+
+const PRIMARY_NAV_ITEMS: NavItem[] = [
+  { name: 'Overview', icon: SquaresFour },
+  { name: 'Events', icon: Trophy },
+  { name: 'My Events', icon: CalendarCheck },
+  { name: 'Certificates', icon: Medal },
+  { name: 'Digital Card', icon: CreditCard },
+  { name: 'Student Guide', icon: FileText },
+  { name: 'Official Communication', icon: Envelope },
+  { name: 'Notifications', icon: Bell },
+  { name: 'Help & Support', icon: Question },
+  { name: 'Profile', icon: User },
 ];
 
 export default function DashboardSidebar({
   activeTab,
   onSelectTab,
-  userName,
+  userName = 'Sai',
   onLogout,
+  isCollapsed = false,
+  onToggleCollapse,
 }: DashboardSidebarProps) {
-  return (
-    <aside className="sticky top-0 flex h-screen w-[260px] min-w-[260px] flex-col border-r border-[#deded8] bg-[#f7f7f4f5] p-5 shadow-[8px_0_30px_rgba(0,0,0,0.02)]">
-      {/* Brand */}
-      <Link to="/" className="flex items-center gap-2">
-        <img src="/campuscode-logo.png" alt="CampusCode" className="h-8 w-auto object-contain" />
-      </Link>
-      <span className="mt-1 font-mono text-[8px] tracking-[1px] text-[#858580]">
-        HACKATHON ARENA
-      </span>
+  if (isCollapsed) {
+    return (
+      <aside className="sticky top-0 z-30 flex h-screen w-[64px] min-w-[64px] flex-col items-center border-r border-[#111111]/[0.08] bg-[#F7F7F4] py-3 select-none text-[#111111]">
+        <div className="flex h-[40px] items-center justify-center">
+          <Link to="/" className="flex items-center justify-center">
+            <img
+              src="/campuscode-logo.png"
+              alt="CampusCode"
+              className="h-[18px] w-auto object-contain"
+            />
+          </Link>
+        </div>
+        <div className="my-2 h-[1px] w-8 bg-[#111111]/[0.08]" />
+        <nav className="flex flex-1 flex-col items-center space-y-2 overflow-y-auto px-1 py-1">
+          {PRIMARY_NAV_ITEMS.map((item) => {
+            const Icon = item.icon;
+            const isActive =
+              activeTab === item.name ||
+              (item.name === 'My Events' && activeTab === 'My Activities') ||
+              (item.name === 'Digital Card' && activeTab === 'Digital ID');
 
-      <div className="mt-6 mb-2 font-mono text-[9px] tracking-[1px] text-[#858580]">
-        WORKSPACE
+            return (
+              <button
+                key={item.name}
+                type="button"
+                onClick={() => onSelectTab(item.name)}
+                title={item.name}
+                className={`flex h-9 w-9 items-center justify-center rounded-[8px] transition-all ${
+                  isActive
+                    ? 'bg-[#7665FF] text-white shadow-2xs'
+                    : 'text-[#666660] hover:bg-black/[0.04] hover:text-[#111111]'
+                }`}
+              >
+                <Icon size={25} className="w-[25px] h-[25px]" />
+              </button>
+            );
+          })}
+        </nav>
+        <div className="mt-auto flex flex-col items-center gap-2 border-t border-[#111111]/[0.08] pt-3">
+          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#111111] font-inter text-[12px] font-bold text-white">
+            {userName ? userName.charAt(0).toUpperCase() : 'S'}
+          </div>
+          {onToggleCollapse && (
+            <button
+              type="button"
+              onClick={onToggleCollapse}
+              aria-label="Expand sidebar"
+              className="flex h-7 w-7 items-center justify-center rounded-md border border-gray-200/60 text-gray-500 hover:bg-gray-100 hover:text-gray-900 transition-colors"
+            >
+              <SidebarSimple size={25} className="w-[25px] h-[25px] rotate-180" />
+            </button>
+          )}
+        </div>
+      </aside>
+    );
+  }
+
+  return (
+    <aside className="sticky top-0 z-30 flex h-screen w-[194px] min-w-[194px] max-w-[194px] flex-col border-r border-[#111111]/[0.08] bg-[#F7F7F4] select-none text-[#111111]">
+      {/* Brand Header */}
+      <div className="flex h-[52px] items-center justify-between border-b border-[#111111]/[0.08] px-3.5">
+        <Link to="/" className="flex items-center">
+          <img
+            src="/campuscode-logo.png"
+            alt="CampusCode"
+            className="h-[20px] w-auto object-contain object-left"
+          />
+        </Link>
+        {onToggleCollapse && (
+          <button
+            type="button"
+            onClick={onToggleCollapse}
+            aria-label="Toggle sidebar"
+            className="flex h-6 w-6 items-center justify-center rounded border border-gray-200/60 text-gray-500 hover:bg-gray-100 hover:text-gray-900 transition-colors"
+          >
+            <SidebarSimple size={25} className="w-[25px] h-[25px]" />
+          </button>
+        )}
       </div>
 
-      {/* Nav List */}
-      <nav className="flex-1 space-y-1 overflow-y-auto pr-1">
-        {NAV_ITEMS.map((item) => {
-          const isActive = activeTab === item.name;
+      {/* Workspace Navigation */}
+      <div className="px-3.5 pt-3.5 pb-1">
+        <span className="font-mono text-[9.5px] font-semibold uppercase tracking-[0.1em] text-[#7A7A75]">
+          WORKSPACE
+        </span>
+      </div>
+
+      {/* Navigation List */}
+      <nav className="flex flex-1 flex-col px-2 py-1.5 space-y-1.5 overflow-y-auto">
+        {PRIMARY_NAV_ITEMS.map((item) => {
+          const Icon = item.icon;
+          const isActive =
+            activeTab === item.name ||
+            (item.name === 'My Events' && activeTab === 'My Activities') ||
+            (item.name === 'Digital Card' && activeTab === 'Digital ID');
+
           return (
             <button
               key={item.name}
               type="button"
               onClick={() => onSelectTab(item.name)}
-              className={`flex w-full min-h-[38px] items-center gap-2.5 rounded-lg px-3 py-2 text-left font-inter text-[12px] font-bold transition-all ${
+              title={item.name}
+              className={`flex w-full min-h-[36px] items-center gap-2.5 rounded-[7px] px-2.5 py-2 text-left transition-all ${
                 isActive
-                  ? 'bg-[#a7d94b] text-[#111111] shadow-[0_7px_22px_rgba(115,145,45,0.15)]'
-                  : 'text-[#6f6f69] hover:bg-[#eeeeea] hover:text-[#111111] hover:translate-x-0.5'
+                  ? 'bg-[#7665FF] font-medium text-white shadow-2xs'
+                  : 'font-normal text-[#111111] hover:bg-black/[0.04]'
               }`}
             >
-              <span className="text-[13px]">{item.icon}</span>
-              <span className="flex-1 truncate">{item.name}</span>
-              {item.isAi && (
-                <span className="font-mono text-[8px] font-black text-[#7665ff]">AI</span>
-              )}
-              {isActive && <b className="font-mono text-[12px]">→</b>}
+              <Icon
+                size={25}
+                className={`w-[25px] h-[25px] shrink-0 ${
+                  isActive ? 'text-white' : 'text-[#666660]'
+                }`}
+              />
+              <span className="truncate text-[13px] tracking-[-0.01em] leading-tight">
+                {item.name}
+              </span>
             </button>
           );
         })}
       </nav>
 
-      {/* Account Footer */}
-      <div className="mt-auto border-t border-[#deded8] pt-4">
-        <div className="mb-2 font-mono text-[8px] tracking-[1px] text-[#858580]">ACCOUNT</div>
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2.5">
-            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#111111] font-inter text-[12px] font-bold text-white">
-              {userName.charAt(0).toUpperCase() || 'S'}
+      {/* Account Section at Bottom */}
+      <div className="border-t border-[#111111]/[0.08] px-3.5 py-3">
+        <div className="mb-2 font-mono text-[9.5px] font-semibold uppercase tracking-[0.1em] text-[#7A7A75]">
+          ACCOUNT
+        </div>
+        <div className="flex items-center gap-2.5">
+          <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#111111] font-inter text-[12px] font-bold text-white">
+            {userName ? userName.charAt(0).toUpperCase() : 'S'}
+          </div>
+          <div className="min-w-0 flex-1">
+            <div className="truncate font-inter text-[13px] font-medium leading-tight text-[#111111]">
+              {userName || 'Sai'}
             </div>
-            <div>
-              <div className="font-inter text-[12px] font-bold text-[#111111]">{userName}</div>
-              <div className="font-mono text-[8px] text-[#858580]">STUDENT</div>
+            <div className="truncate font-inter text-[11px] text-[#7A7A75]">
+              Verified builder
             </div>
           </div>
-          <button
-            onClick={onLogout}
-            className="font-mono text-[9px] text-[#ff5252] hover:underline"
-            title="Log out"
-          >
-            LOG OUT
-          </button>
         </div>
       </div>
     </aside>

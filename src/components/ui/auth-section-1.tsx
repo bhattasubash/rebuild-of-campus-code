@@ -5,7 +5,7 @@ import type { ReactNode } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { GrainGradient } from "@paper-design/shaders-react";
 import { mockUser } from "@/data/user";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft } from "phosphor-react";
 
 export interface AuthSectionOneProps {
   initialMode?: "login" | "register";
@@ -80,7 +80,7 @@ export default function AuthSectionOne({ initialMode = "register" }: AuthSection
           to="/"
           className="flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-wider text-[#71716D] hover:text-[#111111] transition-colors"
         >
-          <ArrowLeft className="h-3.5 w-3.5" />
+          <ArrowLeft size={25} className="w-[25px] h-[25px]" />
           <span>Back to Home</span>
         </Link>
       </div>

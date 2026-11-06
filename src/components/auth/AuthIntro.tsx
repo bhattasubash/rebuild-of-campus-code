@@ -1,6 +1,6 @@
 import * as React from "react";
 import { CampusBadge } from "../common/CampusBadge";
-import { Code2, Trophy, Rocket, ShieldCheck, Users, Award } from "lucide-react";
+import { Code, Trophy, Rocket, ShieldCheck, Users, Medal } from "phosphor-react";
 
 export interface AuthIntroProps {
   mode?: "login" | "register";
@@ -26,7 +26,7 @@ export default function AuthIntro({
           tag: "WORKSPACE",
           title: "Build & Iterate",
           desc: "Cloud dev environments, starter kits & automated CI/CD checks.",
-          icon: Code2,
+          icon: Code,
           highlight: true,
         },
         {
@@ -60,7 +60,7 @@ export default function AuthIntro({
           tag: "MATCHMAKING",
           title: "Form Squads",
           desc: "Connect with frontend, AI, and design builders across campuses.",
-          icon: Award,
+          icon: Medal,
           highlight: false,
         },
         {
@@ -116,7 +116,7 @@ export default function AuthIntro({
                   <span className="font-mono text-[10px] tracking-[0.08em] font-semibold text-[#7665FF]">
                     {item.num} / {item.tag}
                   </span>
-                  <Icon className="h-4 w-4 text-[#71716D] group-hover:text-[#111111] transition-colors" />
+                  <Icon size={25} className="w-[25px] h-[25px] text-[#71716D] group-hover:text-[#111111] transition-colors" />
                 </div>
                 <h3 className="mt-2.5 font-inter text-[14px] font-bold text-[#111111] tracking-tight">
                   {item.title}

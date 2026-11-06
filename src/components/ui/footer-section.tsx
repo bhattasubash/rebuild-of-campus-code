@@ -9,13 +9,13 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip"
-import { Send } from "lucide-react"
 import {
-  GitHubLogoIcon as Github,
-  InstagramLogoIcon as Instagram,
-  LinkedInLogoIcon as Linkedin,
-  TwitterLogoIcon as Twitter,
-} from "@radix-ui/react-icons"
+  PaperPlaneTilt,
+  GithubLogo as Github,
+  InstagramLogo as Instagram,
+  LinkedinLogo as Linkedin,
+  TwitterLogo as Twitter,
+} from "phosphor-react"
 
 function Footerdemo() {
   const [email, setEmail] = React.useState("")
@@ -69,7 +69,7 @@ function Footerdemo() {
                 size="icon"
                 className="absolute right-1 top-1 h-8 w-8 rounded-full bg-[#7665FF] hover:bg-[#6352F0] text-white transition-transform hover:scale-105"
               >
-                <Send className="h-4 w-4" />
+                <PaperPlaneTilt size={25} className="w-[25px] h-[25px]" />
                 <span className="sr-only">Subscribe</span>
               </Button>
             </form>
@@ -143,7 +143,7 @@ function Footerdemo() {
                       rel="noopener noreferrer"
                       className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-[#DEDED8] dark:border-white/10 bg-white dark:bg-white/5 text-[#111111] dark:text-white transition-colors hover:bg-[#F0F0EC] dark:hover:bg-white/10 hover:text-[#7665FF]"
                     >
-                      <Twitter className="h-4 w-4" />
+                      <Twitter size={25} className="w-[25px] h-[25px]" />
                       <span className="sr-only">Twitter</span>
                     </a>
                   </TooltipTrigger>
@@ -162,7 +162,7 @@ function Footerdemo() {
                       rel="noopener noreferrer"
                       className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-[#DEDED8] dark:border-white/10 bg-white dark:bg-white/5 text-[#111111] dark:text-white transition-colors hover:bg-[#F0F0EC] dark:hover:bg-white/10 hover:text-[#7665FF]"
                     >
-                      <Linkedin className="h-4 w-4" />
+                      <Linkedin size={25} className="w-[25px] h-[25px]" />
                       <span className="sr-only">LinkedIn</span>
                     </a>
                   </TooltipTrigger>
@@ -181,7 +181,7 @@ function Footerdemo() {
                       rel="noopener noreferrer"
                       className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-[#DEDED8] dark:border-white/10 bg-white dark:bg-white/5 text-[#111111] dark:text-white transition-colors hover:bg-[#F0F0EC] dark:hover:bg-white/10 hover:text-[#7665FF]"
                     >
-                      <Instagram className="h-4 w-4" />
+                      <Instagram size={25} className="w-[25px] h-[25px]" />
                       <span className="sr-only">Instagram</span>
                     </a>
                   </TooltipTrigger>
@@ -200,7 +200,7 @@ function Footerdemo() {
                       rel="noopener noreferrer"
                       className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-[#DEDED8] dark:border-white/10 bg-white dark:bg-white/5 text-[#111111] dark:text-white transition-colors hover:bg-[#F0F0EC] dark:hover:bg-white/10 hover:text-[#7665FF]"
                     >
-                      <Github className="h-4 w-4" />
+                      <Github size={25} className="w-[25px] h-[25px]" />
                       <span className="sr-only">GitHub</span>
                     </a>
                   </TooltipTrigger>

@@ -48,3 +48,25 @@
     transform: skewX(14deg);
   }
 }
+
+@layer components {
+  .digital-id-screen {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background-image: url("/assets/Minimal Beige Doodle Pattern Background for digital card screen.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    overflow: hidden;
+  }
+
+  .digital-id-artwork {
+    display: block;
+    width: min(100%, 680px);
+    height: auto;
+    object-fit: contain;
+    object-position: center;
+    flex-shrink: 0;
+  }
+}

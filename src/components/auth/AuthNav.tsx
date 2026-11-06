@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Link, useLocation } from "react-router-dom";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft } from "phosphor-react";
 
 export interface AuthNavProps {
   mode?: "login" | "register";
@@ -60,7 +60,7 @@ export default function AuthNav({ mode = "login" }: AuthNavProps) {
             to="/"
             className="hidden sm:inline-flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-[0.05em] text-[#71716D] hover:text-[#111111] transition-colors px-3 py-1.5 rounded-full hover:bg-[#111111]/[0.04]"
           >
-            <ArrowLeft className="h-3.5 w-3.5" />
+            <ArrowLeft size={25} className="w-[25px] h-[25px]" />
             <span>Back to Home</span>
           </Link>
 

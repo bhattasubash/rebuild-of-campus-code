@@ -1,23 +1,36 @@
+import { CampusBadge, PrimaryButton } from '../common';
+
 interface PlaceholderViewProps {
   title: string;
+  onNavigateTab?: (tab: string) => void;
 }
 
-export default function PlaceholderView({ title }: PlaceholderViewProps) {
+export default function PlaceholderView({ title, onNavigateTab }: PlaceholderViewProps) {
   return (
-    <div className="mx-auto max-w-[800px] pt-12">
-      <div className="rounded border border-[#deded8] bg-white p-10 text-center shadow-sm">
-        <span className="font-mono text-[9px] tracking-[1.5px] text-[#7665ff]">
-          CAMPUSCODE / STUDENT ARENA
-        </span>
-        <h2 className="my-3 font-inter text-[32px] font-extrabold tracking-[-1px] text-[#111111]">
+    <div className="mx-auto max-w-[760px] pt-8">
+      <div className="rounded-2xl border border-[#111111]/[0.08] bg-white p-10 md:p-14 text-center shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
+        <CampusBadge variant="purple" size="sm">
+          Round 2 module
+        </CampusBadge>
+
+        <h2 className="mt-4 font-inter text-[28px] font-medium tracking-tight text-[#111111]">
           {title}
         </h2>
-        <div className="my-3 inline-block rounded bg-[#82b91a]/15 px-3 py-1 font-mono text-[9px] font-bold text-[#82b91a]">
-          ACTIVE IN ROUND 2
-        </div>
-        <p className="mx-auto mt-2 max-w-[480px] text-[13px] leading-relaxed text-[#666666]">
-          This feature is scheduled for the Round 2 Rebuild showcase. For Round 1, please explore the faithful recreation of the Overview, Events, and My Events pages.
+
+        <p className="mx-auto mt-3 max-w-[460px] font-inter text-[14px] leading-relaxed text-[#555550]">
+          This module is part of the Round 2 ReBuild showcase. For Round 1, please explore the Overview, Events, and My Events workspaces.
         </p>
+
+        <div className="mt-6 flex justify-center">
+          <PrimaryButton
+            variant="primary"
+            size="md"
+            icon="arrow-pill"
+            onClick={() => onNavigateTab ? onNavigateTab('Events') : undefined}
+          >
+            Continue Challenges
+          </PrimaryButton>
+        </div>
       </div>
     </div>
   );

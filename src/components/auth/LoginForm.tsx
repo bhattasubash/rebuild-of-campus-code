@@ -2,7 +2,7 @@ import * as React from "react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { mockUser } from "../../data/user";
-import { Eye, EyeOff, RotateCw, CheckCircle2, AlertCircle } from "lucide-react";
+import { Eye, EyeSlash, ArrowClockwise, WarningCircle } from "phosphor-react";
 
 export default function LoginForm() {
   const navigate = useNavigate();
@@ -119,7 +119,7 @@ export default function LoginForm() {
       {/* Error notification if any */}
       {errorMessage && (
         <div className="mb-5 flex items-center gap-2 rounded-lg border border-red-200 bg-red-50 p-3 text-[12px] text-red-600">
-          <AlertCircle className="h-4 w-4 shrink-0" />
+          <WarningCircle size={25} className="w-[25px] h-[25px] shrink-0" />
           <span>{errorMessage}</span>
         </div>
       )}
@@ -190,7 +190,7 @@ export default function LoginForm() {
                 className="ml-2 font-mono text-[10px] uppercase tracking-wider text-[#71716D] hover:text-[#111111] transition-colors"
                 title={showPassword ? "Hide password" : "Show password"}
               >
-                {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                {showPassword ? <EyeSlash size={25} className="w-[25px] h-[25px]" /> : <Eye size={25} className="w-[25px] h-[25px]" />}
               </button>
             </div>
             {/* Input Field to Helper Text: EXACTLY 4px gap (mt-1) */}
@@ -231,7 +231,7 @@ export default function LoginForm() {
                   className="p-1 text-[#71716D] hover:text-[#111111] transition-colors rounded hover:bg-black/5"
                   title="Generate new captcha code"
                 >
-                  <RotateCw className="h-3.5 w-3.5" />
+                  <ArrowClockwise size={25} className="w-[25px] h-[25px]" />
                 </button>
               </div>
             </div>

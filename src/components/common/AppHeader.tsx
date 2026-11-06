@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu } from "lucide-react";
+import { List } from "phosphor-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 
@@ -77,7 +77,7 @@ export function AppHeader({ navItems = defaultNav, action }: AppHeaderProps) {
             <Sheet open={open} onOpenChange={setOpen}>
               <SheetTrigger asChild>
                 <Button variant="ghost" size="icon" className="rounded-full">
-                  <Menu className="h-5 w-5 text-[#111111]" />
+                  <List size={25} className="w-[25px] h-[25px] text-[#111111]" />
                 </Button>
               </SheetTrigger>
               <SheetContent side="right" className="bg-[#FAF9F7] p-6">

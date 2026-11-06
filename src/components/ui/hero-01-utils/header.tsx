@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
-import { ArrowUpRight, Menu } from "lucide-react";
+import { ArrowUpRight, List } from "phosphor-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 
@@ -72,7 +72,7 @@ export default function Header({
             <Sheet open={open} onOpenChange={setOpen}>
               <SheetTrigger asChild>
                 <Button variant="ghost" size="icon" className="rounded-full">
-                  <Menu className="h-5 w-5 text-[#111111]" />
+                  <List size={25} className="w-[25px] h-[25px] text-[#111111]" />
                 </Button>
               </SheetTrigger>
               <SheetContent side="right" className="bg-[#FAF9F7] p-6">
@@ -93,7 +93,7 @@ export default function Header({
                     className="inline-flex items-center justify-center gap-2 rounded-full bg-[#111111] px-6 py-3 font-inter text-sm font-medium text-white mt-4"
                   >
                     <span>{ctaText}</span>
-                    <ArrowUpRight className="h-4 w-4" />
+                    <ArrowUpRight size={25} className="w-[25px] h-[25px]" />
                   </Link>
                 </div>
               </SheetContent>

@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight } from "phosphor-react";
 
 export interface AvatarList {
   image: string;
@@ -73,7 +73,7 @@ export default function HeroSection({
           >
             <span>{primaryCtaText}</span>
             <div className="flex h-6 w-6 items-center justify-center rounded-full bg-white/20 text-white transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
-              <ArrowUpRight className="h-3.5 w-3.5" />
+              <ArrowUpRight size={25} className="w-[25px] h-[25px]" />
             </div>
           </Link>
         </div>

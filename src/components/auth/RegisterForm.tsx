@@ -2,7 +2,7 @@ import * as React from "react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { mockUser } from "../../data/user";
-import { Eye, EyeOff, AlertCircle, GraduationCap } from "lucide-react";
+import { Eye, EyeSlash, WarningCircle, GraduationCap } from "phosphor-react";
 
 export default function RegisterForm() {
   const navigate = useNavigate();
@@ -130,7 +130,7 @@ export default function RegisterForm() {
       {/* Error notification if any */}
       {errorMessage && (
         <div className="mb-5 flex items-center gap-2 rounded-lg border border-red-200 bg-red-50 p-3 text-[12px] text-red-600">
-          <AlertCircle className="h-4 w-4 shrink-0" />
+          <WarningCircle size={25} className="w-[25px] h-[25px] shrink-0" />
           <span>{errorMessage}</span>
         </div>
       )}
@@ -204,7 +204,7 @@ export default function RegisterForm() {
             {/* Form Label to Input Field: EXACTLY 8px gap (mt-2) */}
             <div className="mt-2 flex h-[48px] items-center justify-between rounded-lg border border-[#DEDED8] bg-[#F2F2EE] px-3.5 opacity-95">
               <div className="flex items-center gap-2">
-                <GraduationCap className="h-4 w-4 text-[#555550]" />
+                <GraduationCap size={25} className="w-[25px] h-[25px] text-[#555550] shrink-0" />
                 <span className="font-mono text-[12.5px] font-bold text-[#111111]">
                   STUDENT BUILDER (NATIONAL ARENA)
                 </span>
@@ -245,7 +245,7 @@ export default function RegisterForm() {
                     onClick={() => setShowPassword(!showPassword)}
                     className="ml-1 text-[#71716D] hover:text-[#111111]"
                   >
-                    {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                    {showPassword ? <EyeSlash size={25} className="w-[25px] h-[25px]" /> : <Eye size={25} className="w-[25px] h-[25px]" />}
                   </button>
                 </div>
               </div>
